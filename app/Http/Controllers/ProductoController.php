@@ -270,7 +270,7 @@ public function comprarProducto(Request $request, Producto $producto)
      */
     public function edit(Producto $producto)
     {
-        //
+        return view('productosEditarVendedor', compact('producto'));
     }
 
 
