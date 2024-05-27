@@ -2,7 +2,7 @@
 
 @section('contenido')
     <div class="container">
-        <h1>Editar Producto</h1>
+        <h1>Editar Productoo</h1>
         <form action="{{ route('productosActualizar', $producto->id) }}" method="POST">
             @csrf
             @method('PUT')
