@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+<link rel="stylesheet" href="/css/transacciones-detalles.css">
+
 @section('contenido')
 <br><br><br>
 <div class = "container">
@@ -20,10 +22,10 @@
                     </div>
                     <div class="col-md-6">
                         <p>Alta: {{ $transa->created_at }}</p>
-                        <p>Categoria: {{ $transa->producto->categoria->nombre }}</p>
+                        <p id="text-categoria">{{ $transa->producto->categoria->nombre }}</p>
                     </div>
                     <p>{{$transa->voucher}}</p>
-                    <img src="{{ asset('storage/' . $transa->voucher) }}" class="img-thumbnail" alt="Voucher de la transacción" style="max-width: 200px;">
+                    <img id="img-evidencia" src="{{ asset('/storage/evidencias/' . $transa->id . '.png') }}" class="img-thumbnail" alt="Voucher de la transacción" style="max-width: 200px;">
                 </div>
             </div>
             <form action={{ route('transaccion', $transa->id) }} method="POST">
@@ -36,7 +38,7 @@
                         <option value="Pendiente" {{ $transa->estado === 'Pendiente' ? 'selected' : '' }}>Pendiente</option>
                         <option value="Aceptado" {{ $transa->estado === 'Aceptado' ? 'selected' : '' }}>Aceptado</option>
                     </select>
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button id="btn-guardar" type="submit" class="btn btn-primary">Guardar</button>
             </form>
     </div>
 </div>

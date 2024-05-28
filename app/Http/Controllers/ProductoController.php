@@ -80,8 +80,7 @@ class ProductoController extends Controller
     return view('ProductosVendedor', compact('productos'));
 }
     
-    public function subirEvidencia($id)
-    {
+    public function subirEvidencia($id){
         // Acceder al producto asociado a la transacción a través de la relación
         $producto = Producto::findOrFail($id);
     
@@ -105,12 +104,22 @@ public function guardarEvidencia(Request $request, $id)
     $evidencia->idProducto = $id;
     $evidencia->cantidad = $request->input('cantidad');
     $evidencia->idUsuario = auth()->user()->id;
-    $evidencias = $request->file('evidencia');
-    $evidenciaNombre = $evidencias->store('public/evidencias'); // Cambia 'public/evidencias' según la ruta donde desees guardar los archivos
-    $evidencia->voucher = $evidenciaNombre;
     $evidencia->estado = 'Pendiente';
     $evidencia->calificacion = $request->input('calificacion');
     $evidencia->precio = $request->input('cantidad') * $obtenerProducto->precio;
+
+    $evidencia->save();
+
+    $foto = $request->file('evidencia');
+    $extension = $foto->getClientOriginalExtension(); // Obtiene la extensión del archivo
+    $nombreArchivo = $evidencia->id . '.' . $extension; //nombre del archivo
+            
+    $ruta = 'public/storage/evidencias'. $nombreArchivo; // Guarda la imagen en la carpeta "storage/app/evidencias"
+    $foto->move(public_path('/storage/evidencias'), $nombreArchivo);
+
+    //$evidencias = $request->file('evidencia');
+    //$evidenciaNombre = $evidencias->store('public/evidencias'); // Cambia 'public/evidencias' según la ruta donde desees guardar los archivos
+    //$evidencia->voucher = $evidenciaNombre;
 
     $obtenerProducto->stock = $obtenerProducto->stock - $request->input('cantidad');
     $obtenerProducto->save();

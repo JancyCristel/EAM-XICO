@@ -1,0 +1,13 @@
+.container h1 {
+    margin: 24px 0;
+}
+
+#btn-guardar {
+    border: none;
+    background-color: #036564;
+}
+
+#btn-guardar:hover {
+    border: none;
+    background-color: #037c7a;
+}
