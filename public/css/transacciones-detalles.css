@@ -1,0 +1,13 @@
+#text-categoria {
+    display: inline-block;
+    background-color: #036564;
+    border-radius: 10px;
+    padding: 4px 8px;
+    color: #FFF;
+}
+
+#btn-guardar {
+    border: none;
+    margin: 12px 0;
+    background-color: #036564;
+}
