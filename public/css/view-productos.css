@@ -9,21 +9,22 @@ h1 {
 }
 
 .input-group-append button {
-    background: #036564;
+    background: #00AEEF;
     border: none;
 }
 
+/* btn buscar*/
 .input-group-append button:hover {
-    background: #033649;
+    background: #1ad808; 
 }
 
 .card-body a {
-    background: #036564;
+    background: #00AEEF;
     border: none;
 }
 
 .card-body a:hover {
-    background: #033649;
+    background: #1ad808;
 }
 
 .card-body p {

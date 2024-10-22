@@ -4,7 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Schema;
 use App\Models\Categoria;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,7 +23,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $categorias = Categoria::all();
-        View::share('categorias', $categorias);
+        // Verificar si no se está ejecutando un comando de Artisan y si la tabla 'categorias' existe
+        if (!app()->runningInConsole() && Schema::hasTable('categorias')) {
+            $categorias = Categoria::all();
+            View::share('categorias', $categorias);
+        }
     }
 }
+

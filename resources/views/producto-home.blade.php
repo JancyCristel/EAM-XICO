@@ -38,7 +38,7 @@
                                 <p class="card-text">Stock: {{ $producto->producto->stock }}</p>
                                 <p class="card-text">Categoria: {{ $producto->producto->categoria->nombre }}</p>
                                 <p class="card-text">Precio: {{ $producto->producto->precio }}</p>
-                                <p class="card-text">Usuario: {{ $producto->producto->user->name }}</p>
+                                
                                 <a href="{{ route('detalles', $producto->id) }}" class="btn btn-primary">Ver Detalles</a>
                                 @if (Auth::check())
                                     @if (Auth::user()->rol == 'Cliente')

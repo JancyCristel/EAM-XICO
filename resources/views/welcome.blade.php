@@ -7,7 +7,7 @@
 <body>
     <div class="container-login">
         <div class="container-login-left">
-            <h1>INICIO DE SESION</h1>
+            <h1>INICIO DE SESIÓN</h1>
             <p>Nos alegra verte de nuevo</p>
             <form action="" method="POST">
                 @csrf

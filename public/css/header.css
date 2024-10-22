@@ -3,38 +3,15 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.header-title-web {
-    background-color: #000;
-    color: #FFF;
-    padding: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-}
-
-.header-title-web p{
-    font-size: 14px;
-    height: auto;
-    padding: 0;
-    margin: 0;
-}
-
 .header-container {
     background-color: #036564;
     color: white;
-    padding: 8px 30px;
+    padding: 15px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.header-title {
-    font-size: 24px;
-    margin-right: 95px; /* Separación del título a la izquierda */
-    color: #FFF;
-    font-weight: 600;
-}
 
 .nav-menu {
     list-style-type: none;
@@ -49,12 +26,17 @@ body {
 }
 
 .nav-menu li a {
-    color: #FFF;
+    color: white; /* Color del texto por defecto */
     text-decoration: none;
+    padding: 10px;
+    transition: all 0.3s ease; /* Transición suave */
 }
 
 .nav-menu li a:hover {
-    text-decoration: underline;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo sombreado */
+    color: white; /* Cambia el color del texto al pasar el ratón */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Efecto de sombra */
+    border-radius: 5px; /* Bordes redondeados (opcional) */
 }
 
 /* Dropdown Menu */
@@ -73,9 +55,3 @@ body {
     display: block;
 }
 
-#btn-sesion {
-    background: #98092b; 
-    padding:6px 14px; 
-    border-radius:14px; 
-    font-size: 14px;
-}

@@ -8,10 +8,13 @@
         @if(auth()->check())
         <div class="container">
                 <br><br>
-        <h1>Bienvenido a tu página de inicio, {{ auth()->user()->name }}</h1>
-        <p>Es un placer darte la bienvenida a tu área personal en nuestro sitio. Como {{ auth()->user()->rol }}, tienes acceso privilegiado a funcionalidades y contenido específicos que te ayudarán en tus tareas y responsabilidades.</p>
-        <p>Estamos comprometidos a brindarte una experiencia excepcional, proporcionándote herramientas y recursos que faciliten tu trabajo y mejoren tu eficiencia.</p>
-        <p>No dudes en explorar todas las opciones disponibles y aprovechar al máximo tu experiencia en nuestro sitio. ¡Bienvenido de nuevo y esperamos que tu visita sea productiva y satisfactoria!</p>
+        <header class="hero">   
+            <h1>Energía Activa de México</h1>
+            <p>Intégrate al futuro</p>
+            <a href="sobre-nosotros" class="btn-vermas">Ver Más</a>
+        </header>
+
+
                 @if(auth()->user()->rol == 'Supervisor')
                 <div class="container">
                         <div class="row">
@@ -143,10 +146,10 @@
         @else
         <div class="container">
                 <br><br>
-        <img class="banner-web" src="/img/banner-web.png" alt="Banner">
+        <img class="banner-web" src="/img/banner-web-1.png" alt="Banner">
         <div class= "container-text">
                 <div class="container-text-left">
-                        <h1>Bienvenido a Techtopia</h1>
+                        <h1>Bienvenido</h1>
                         <p>En Techtopia, estamos comprometidos a brindarte lo último en tecnología y soluciones innovadoras. Nuestro objetivo es proporcionarte productos de calidad que mejoren tu vida diaria y te mantengan al día con las últimas tendencias tecnológicas.</p>
                         <p>Explora nuestra amplia gama de productos, desde dispositivos móviles y equipos informáticos hasta gadgets inteligentes y accesorios de vanguardia. Con marcas líderes y productos de alta calidad, estamos seguros de que encontrarás lo que necesitas en Techtopia.</p>
                         <p>Además de ofrecerte productos excepcionales, también nos esforzamos por brindarte la mejor experiencia de compra. Nuestro equipo está aquí para ayudarte en cada paso del camino, desde encontrar el producto perfecto hasta asegurarte de que tu compra sea sin problemas.</p>
