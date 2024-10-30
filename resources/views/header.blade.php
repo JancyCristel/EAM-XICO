@@ -11,7 +11,9 @@
 <body>
     <header>
         <div class="header-container">
-            <div class="header-title">Energía Activa de México</div>
+            <a href="/login2" class="header-logo">
+                <img src="img\EA.png"  class="logo">
+            </a>
             <nav>
                 <ul class="nav-menu">
                     <li><a href="/login2">Inicio</a></li>
@@ -19,7 +21,9 @@
                         <a href="#" class="dropdown-toggle">Servicios</a>
                         <ul class="dropdown-menu">
                             @foreach ($categorias as $categoria)
-                                <li><a href="{{ route('productosPorCategoria', $categoria->id) }}">{{ $categoria->nombre }}</a></li>
+                                <li><a
+                                        href="{{ route('productosPorCategoria', $categoria->id) }}">{{ $categoria->nombre }}</a>
+                                </li>
                             @endforeach
                         </ul>
                     </li>
@@ -76,8 +80,8 @@
 
     <script>
         // JavaScript para manejar el menú desplegable
-        document.querySelectorAll('.dropdown-toggle').forEach(function(toggle) {
-            toggle.addEventListener('click', function(e) {
+        document.querySelectorAll('.dropdown-toggle').forEach(function (toggle) {
+            toggle.addEventListener('click', function (e) {
                 e.preventDefault(); // Evitar que el enlace realice su acción por defecto
                 const dropdown = this.nextElementSibling; // Obtener el menú desplegable
                 dropdown.classList.toggle('open'); // Alternar la clase 'open' para mostrar/ocultar el menú
@@ -85,8 +89,8 @@
         });
 
         // Cerrar el menú al hacer clic fuera de él
-        window.addEventListener('click', function(e) {
-            document.querySelectorAll('.dropdown-menu').forEach(function(menu) {
+        window.addEventListener('click', function (e) {
+            document.querySelectorAll('.dropdown-menu').forEach(function (menu) {
                 if (!menu.parentElement.contains(e.target)) {
                     menu.classList.remove('open'); // Remover la clase 'open' si se hace clic fuera
                 }

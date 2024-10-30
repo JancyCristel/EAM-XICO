@@ -68,4 +68,15 @@ body {
 .dropdown-menu.open {
     display: block; /* Mostrar el menú si tiene la clase 'open' */
 }
+.header-logo {
+    display: flex;
+    align-items: center;
+}
+
+.header-logo .logo {
+    height: 50px; /* Ajusta el tamaño según el diseño */
+    width: auto;
+    padding-right: 15px; /* Espaciado a la derecha del logo */
+}
+
 
