@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('titulo', 'Registro de usuario') <!-- Establecer el título aquí -->
 <link rel="stylesheet" href="/css/sign-up.css">
 
 @section('contenido')

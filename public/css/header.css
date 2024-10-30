@@ -12,7 +12,6 @@ body {
     align-items: center;
 }
 
-
 .nav-menu {
     list-style-type: none;
     margin: 0;
@@ -22,6 +21,7 @@ body {
 }
 
 .nav-menu li {
+    position: relative; /* Importante para el menú desplegable */
     padding: 0 10px;
 }
 
@@ -44,14 +44,28 @@ body {
     position: absolute;
     background-color: #036564;
     z-index: 1;
-    display: none;
+    display: none; /* Mantener oculto por defecto */
+    margin-top: 10px; /* Espacio entre el enlace y el menú desplegable */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
 }
 
 .dropdown-menu li {
-    padding: 10px;
+    padding: 10px 20px; /* Espaciado más cómodo */
 }
 
-.dropdown:hover .dropdown-menu {
-    display: block;
+.dropdown-menu li a {
+    color: white; /* Asegúrate de que el texto sea blanco */
+    display: block; /* Hacer que el área de clic sea más grande */
+    transition: background-color 0.3s; /* Transición para el fondo */
+}
+
+.dropdown-menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo claro al pasar el mouse */
+}
+
+/* Mostrar el menú al tener la clase 'open' */
+.dropdown-menu.open {
+    display: block; /* Mostrar el menú si tiene la clase 'open' */
 }
 

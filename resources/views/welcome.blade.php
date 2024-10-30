@@ -1,7 +1,7 @@
 @extends('layouts.app')
+@section('titulo', 'Inicio de sesión') <!-- Establecer el título aquí -->
 @section('contenido')
 <head>
-    <title>INCIO DE SESION</title>
     <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>

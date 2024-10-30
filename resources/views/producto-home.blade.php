@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('titulo', 'Productos') <!-- Establecer el título aquí -->
 
 <link rel="stylesheet" href="/css/view-productos.css">
 

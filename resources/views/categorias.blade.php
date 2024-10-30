@@ -1,6 +1,7 @@
 <!-- categorias.blade.php -->
 
 @extends('layouts.app')
+@section('titulo', 'Servicios') <!-- Establecer el título aquí -->
 
 @section('contenido')
 

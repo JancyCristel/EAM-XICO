@@ -300,11 +300,19 @@ public function comprarProducto(Request $request, Producto $producto)
     }
 
     public function verDetalles($id)
-{
-
-    $producto = Producto::findOrFail($id);
-    return view('detalles', compact('producto'));
-}
+    {
+        // Intentar buscar el producto con relaciones
+        $producto = Producto::with(['categoria', 'user', 'preguntas.respuestas'])->find($id);
+    
+        // Si no se encuentra, redirigir con un mensaje
+        if (!$producto) {
+            return redirect()->route('lista')->with('error', 'Producto no encontrado');
+        }
+    
+        // Retornar la vista con el producto
+        return view('detalles', compact('producto'));
+    }
+    
 
 public function verDetallesKardex($id)
 {
