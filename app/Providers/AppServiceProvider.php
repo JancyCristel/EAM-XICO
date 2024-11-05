@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\Categoria;
 
 
+
 class AppServiceProvider extends ServiceProvider
 {
     /**

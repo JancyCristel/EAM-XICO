@@ -5,24 +5,14 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Auth\Auth;
+use Illuminate\Support\Facades\Auth; // Importa Auth
 
 class LoginController extends Controller
 {
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
     protected $redirectTo = '/home';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
@@ -30,18 +20,16 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        // Validar los datos del formulario
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
-    
-        // Intentar iniciar sesión con las credenciales proporcionadas
-        if (Auth::attempt($credentials)) {
-            // La autenticación fue exitosa
+
+        if (Auth::attempt($credentials)) { // Usa el facade Auth directamente
             $user = Auth::user();
-    
-            // Redirigir según el rol del usuario
+
+            session()->forget('cart_' . $user->id);
+
             switch ($user->role) {
                 case 'Encargado':
                     return redirect()->route('encargado');
@@ -57,10 +45,10 @@ class LoginController extends Controller
                     return redirect('/home');
             }
         } else {
-            // La autenticación falló
             return back()->withErrors(['email' => 'Correo electrónico o contraseña incorrectos.']);
         }
     }
-    
-
 }
+
+
+

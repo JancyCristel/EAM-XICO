@@ -17,5 +17,6 @@
     <footer>
         @include('footer')
     </footer>
+    @yield('scripts')
 </body>
 </html>
