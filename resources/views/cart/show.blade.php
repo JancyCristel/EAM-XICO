@@ -1,8 +1,8 @@
 @extends('layouts.app')
-
+@section('titulo', 'Carrito de Compras') <!-- Establecer el título aquí -->
 @section('contenido')
 <div class="container">
-    <h1>Tu Carrito</h1>
+    <h1>Carrito de Compras</h1>
 
     @if(session('success'))
         <div class="alert alert-success" id="success-message"> <!-- ID agregado aquí -->
@@ -58,7 +58,8 @@
         </table>
         <h3>Total General: ${{ number_format($totalGeneral, 2) }}</h3>
     @endif
-    <a href="{{ route('pago') }}" class="btn btn-success">Proceder al Pago</a>
+    <a href="{{ route('lista') }}" class="btn btn-secondary">Seguir comprando</a> <!-- Botón para volver a la sección de productos -->
+    <a href="{{ route('pago') }}" class="btn btn-success">Proceder al Pago y Envío</a>
 </div>
 
 @section('scripts')

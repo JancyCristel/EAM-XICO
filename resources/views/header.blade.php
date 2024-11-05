@@ -23,9 +23,7 @@
                         <a href="#" class="dropdown-toggle">Servicios</a>
                         <ul class="dropdown-menu">
                             @foreach ($categorias as $categoria)
-                                <li><a
-                                        href="{{ route('productosPorCategoria', $categoria->id) }}">{{ $categoria->nombre }}</a>
-                                </li>
+                                <li><a href="{{ route('productosPorCategoria', $categoria->id) }}">{{ $categoria->nombre }}</a></li>
                             @endforeach
                         </ul>
                     </li>
@@ -78,7 +76,6 @@
                                     {{ session('cart.totalItems', 0) }}
                                     <!-- Aquí se debería calcular desde el carrito en la sesión -->
                                 </span>
-
                             </a>
                         </li>
                         <li><a href="{{ route('login.out') }}">Cerrar sesión</a></li>
@@ -137,3 +134,4 @@
 </body>
 
 </html>
+

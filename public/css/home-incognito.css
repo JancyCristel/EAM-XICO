@@ -19,6 +19,7 @@ html, body {
 /* Hero Section */
 /* Sección Hero */
 .hero {
+    font-family: Arial, sans-serif;
     background-image: url('/img/fondo.avif'); /* Asegúrate de que la ruta esté correcta */
     background-size: cover;
     background-position: center;
@@ -45,16 +46,17 @@ html, body {
 }
 
 .btn-vermas {
-    background-color: #FFB400;
-    color: #fff;
-    padding: 0.75rem 2rem;
-    text-decoration: none;
+    background-color: #004cfc;
+    color: white;
+    padding: 10px 20px;
     border-radius: 5px;
-    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
 }
 
 .btn-vermas:hover {
-    background-color: #ff9f00;
+    color: #f4f4f9;
+    background-color: #007ACC;
 }
 
 /* Section Background */
@@ -89,16 +91,17 @@ html, body {
 }
 
 .btn-vermas2 {
-    background-color: #033649;
-    color: #fff;
-    padding: 0.5rem 1.5rem;
-    text-decoration: none;
+    background-color: #004cfc;
+    color: white;
+    padding: 10px 20px;
     border-radius: 5px;
-    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
 }
 
 .btn-vermas2:hover {
-    background-color: #022b3a;
+    color: #f4f4f9;
+    background-color: #007ACC;
 }
 
 /* Image Container */

@@ -15,10 +15,11 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\pagopay;
 
 
-
+//inicio
 Route::get('/', function () {
     return view('home');
 });
+
 //SESION INICIO
 Route::get('/login',[SessionController::class, 'create'])->name('login.index');
 Route::post('/login',[SessionController::class, 'store'])->name('login.store');
@@ -74,7 +75,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
     Route::post('/carrito/update/{id}', [CartController::class, 'update'])->name('cart.update');
     Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
-    Route::post('/cart/clear', [CartController::class, 'clearCart'])->name('cart.clear');
     Route::get('/cart/count', [CartController::class, 'getCount'])->name('cart.count');
 
 });
@@ -85,6 +85,7 @@ Route::group(['middleware' => 'web'], function () {
 //pago
 Route::post('/procesar-pago', [PagoPay::class, 'procesarPago'])->name('pagopay');
 Route::get('/pago', [PagoPay::class, 'index'])->name('pago');
+
 
 
 

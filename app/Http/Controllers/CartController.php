@@ -86,13 +86,7 @@ class CartController extends Controller
         return redirect()->back()->with('success', 'Producto eliminado del carrito.');
     }
 
-    // Vacía el carrito
-    public function clear() {
-        $cartKey = 'cart_' . auth()->id();
-        session()->forget($cartKey);
-
-        return redirect()->back()->with('success', 'Carrito vaciado.');
-    }
+    
 }
 
 

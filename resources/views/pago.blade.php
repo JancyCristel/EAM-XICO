@@ -1,37 +1,39 @@
 @extends('layouts.app')
+@section('titulo', 'Resumen') <!-- Establecer el título aquí -->
+@section('contenido')
+<div class="container">
+    
 
-@section('content')
-    <h1>Resumen del Pago</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Producto</th>
-                <th>Cantidad</th>
-                <th>Precio</th>
-                <th>Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($carrito as $item)
+    @if(empty($cart))
+        <p>No hay productos en el carrito para proceder con el pago.</p>
+    @else
+        <h3>Resumen del Pedido</h3>
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>{{ $item['nombre'] }}</td>
-                    <td>{{ $item['quantity'] }}</td>
-                    <td>${{ $item['price'] }}</td>
-                    <td>${{ $item['price'] * $item['quantity'] }}</td>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach ($cart as $item)
+                    <tr>
+                        <td>{{ $item['name'] }}</td>
+                        <td>{{ $item['quantity'] }}</td>
+                        <td>${{ number_format($item['price'] * $item['quantity'], 2) }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
 
-    <h3>Total a Pagar: ${{ $total }}</h3>
-    <a href="{{ route('cart.show') }}" class="btn btn-secondary">Volver al Carrito</a>
-    <form action="{{ route('checkout') }}" method="POST">
-        @csrf
-        <button type="submit" class="btn btn-success">Proceder con el Pago</button>
-    </form>
+        <h3>Total a Pagar: ${{ number_format($total, 2) }}</h3>
+
+        
+            @csrf
+            <!-- Campos de pago -->
+            <button type="submit" class="btn btn-success">Elegir Direccion de Envío</button>
+        </form>
+    @endif
+</div>
 @endsection
-
-
-
-
