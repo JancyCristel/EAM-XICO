@@ -4,7 +4,8 @@ body {
 }
 
 .header-container {
-    background-color: #036564;
+    background: rgb(0,123,244);
+background: linear-gradient(90deg, rgba(0,123,244,1) 18%, rgba(0,192,230,0.896796218487395) 52%, rgba(0,76,252,1) 88%);
     color: white;
     padding: 15px 30px;
     display: flex;

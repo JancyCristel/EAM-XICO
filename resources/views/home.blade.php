@@ -3,139 +3,179 @@
 <link rel="stylesheet" href="/css/home-incognito.css">
 
 @section('contenido')
-    <div class="container">
-        <br><br>
-        <img class="banner-web" src="/img/banner-web-1.png" alt="Banner">
-        <div class="container-text">
-            <div class="container-text-left">
-                <h1>Bienvenido</h1>
-                <p>En Techtopia, estamos comprometidos a brindarte lo último en tecnología y soluciones innovadoras. Nuestro objetivo es proporcionarte productos de calidad que mejoren tu vida diaria y te mantengan al día con las últimas tendencias tecnológicas.</p>
-                <p>Explora nuestra amplia gama de productos, desde dispositivos móviles y equipos informáticos hasta gadgets inteligentes y accesorios de vanguardia. Con marcas líderes y productos de alta calidad, estamos seguros de que encontrarás lo que necesitas en Techtopia.</p>
-                <p>Además de ofrecerte productos excepcionales, también nos esforzamos por brindarte la mejor experiencia de compra. Nuestro equipo está aquí para ayudarte en cada paso del camino, desde encontrar el producto perfecto hasta asegurarte de que tu compra sea sin problemas.</p>
-                <p>Únete a la revolución tecnológica en Techtopia y descubre un mundo de posibilidades tecnológicas emocionantes. ¡Gracias por visitarnos y esperamos verte pronto!</p>
-            </div>
-            <div class="container-text-right">
-                <img src="/img/img-banner.png" alt="Promociones">
-            </div>
-        </div>
+    <!-- Sección Principal (Hero) -->
+    <header class="hero">
+        <h1>Energía Activa de México</h1>
+        <p>Intégrate al futuro</p>
+        <a href="#sobre-nosotros" class="btn-vermas">Ver Más</a>
+    </header>
 
-        @if(auth()->check())
-            @if(auth()->user()->rol == 'Supervisor')
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4>Cantidad de usuarios</h4>
-                                </div>
-                                <div class="card-body">
-                                    <p>{{ $CantidadUsuarios }}</p>
-                                </div>
+    <!-- Sección Sobre Nosotros -->
+    <section id="sobre-nosotros" class="section-background">
+        <div class="text-container">
+            <h2>Energía Activa de México</h2>
+            <p>Somos Integradores de servicios tecnológicos que ayudamos a lograr más, estableciendo relaciones de ganar-ganar. Respaldados por marcas líderes en seguridad, control de acceso, automatización, cómputo, mobiliario y energías alternas.</p>
+            <a href="#nuestro-compromiso" class="btn-vermas2">Ver Más</a>
+        </div>
+        <div class="image-container">
+            <img src="icono.jpg" alt="Icono de Energía Activa">
+        </div>
+    </section>
+
+    <!-- Sección Nuestro Compromiso -->
+    <section id="nuestro-compromiso" class="section-background reverse">
+        <div class="text-container">
+            <h2>Nuestro Compromiso</h2>
+            <p>En Energía Activa de México implementamos proyectos que amplían el desarrollo de personas, empresas y comunidades, mejorando su calidad de vida y solucionando problemas para que alcancen sus metas.</p>
+        </div>
+        <div class="image-container">
+            <img src="nosotros.jpg" alt="Imagen de Nuestro Compromiso">
+        </div>
+    </section>
+
+    <!-- Sección Servicios Tecnológicos -->
+    <section id="servicios" class="section-background">
+        <h2>Servicios Tecnológicos</h2>
+        <p>Ofrecemos una gama de servicios tecnológicos adaptados a tus necesidades.</p>
+        <div class="services-gallery">
+            <div class="service-item">
+                <img src="service1.jpg" alt="Servicio 1">
+                <p>Descripción breve del servicio 1</p>
+            </div>
+            <div class="service-item">
+                <img src="service2.jpg" alt="Servicio 2">
+                <p>Descripción breve del servicio 2</p>
+            </div>
+            <!-- Agrega más servicios según sea necesario -->
+        </div>
+    </section>
+
+    <!-- Sección Capacidad y Experiencia en el Mercado -->
+    <section id="capacidad-experiencia" class="section-background">
+        <h2>Capacidad y Experiencia en el Mercado</h2>
+        <div class="photo-carousel">
+            <img src="producto1.avif" alt="Experiencia 1">
+            <img src="panel.avif" alt="Experiencia 2">
+            <!-- Agrega más fotos según sea necesario -->
+        </div>
+    </section>
+
+    @if(auth()->check())
+        @if(auth()->user()->rol == 'Supervisor')
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Cantidad de usuarios</h4>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4>Último usuario registrado</h4>
-                                </div>
-                                <div class="card-body">
-                                    <ul>
-                                        <li>ID: {{ $UltimoUsuarioRegistrado->id }}</li>
-                                        <li>Nombre: {{ $UltimoUsuarioRegistrado->name }}</li>
-                                        <li>Apellido: {{ $UltimoUsuarioRegistrado->apellido_paterno }} {{ $UltimoUsuarioRegistrado->apellido_materno }}</li>
-                                    </ul>
-                                </div>
+                            <div class="card-body">
+                                <p>{{ $CantidadUsuarios }}</p>
                             </div>
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="card col-md-6">
+                    <div class="col-md-6">
+                        <div class="card">
                             <div class="card-header">
-                                <h4>
-                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#transaccionesCollapse" aria-expanded="true" aria-controls="transaccionesCollapse">
-                                        Transacciones
-                                    </button>
-                                </h4>
+                                <h4>Último usuario registrado</h4>
                             </div>
-                            <div id="transaccionesCollapse" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>Producto</th>
-                                                    <th>Descripción</th>
-                                                    <th>Cantidad</th>
-                                                    <th>Precio</th>
-                                                    <th>Usuario</th>
-                                                    <th>Alta</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($Transacciones as $transaccion)
-                                                    <tr>
-                                                        <td>{{ $transaccion->id }}</td>
-                                                        <td>{{ $transaccion->producto->nombre }}</td>
-                                                        <td>{{ $transaccion->producto->descripcion }}</td>
-                                                        <td>{{ $transaccion->cantidad }}</td>
-                                                        <td>{{ $transaccion->precio }}</td>
-                                                        <td>{{ $transaccion->usuario->name }}</td>
-                                                        <td>{{ $transaccion->created_at }}</td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card col-md-6">
-                            <div class="card-header">
-                                <h4>
-                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#productosNoConsignadosCollapse" aria-expanded="true" aria-controls="productosNoConsignadosCollapse">
-                                        Productos no consignados
-                                    </button>
-                                </h4>
-                            </div>
-                            <div id="productosNoConsignadosCollapse" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>Producto</th>
-                                                    <th>Descripción</th>
-                                                    <th>Stock</th>
-                                                    <th>Usuario</th>
-                                                    <th>Alta</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($ProductosNConsignados as $producto)
-                                                    <tr>
-                                                        <td>{{ $producto->id }}</td>
-                                                        <td>{{ $producto->producto->nombre }}</td>
-                                                        <td>{{ $producto->producto->descripcion }}</td>
-                                                        <td>{{ $producto->producto->stock }}</td>
-                                                        <td>{{ $producto->producto->user->name }}</td>
-                                                        <td>{{ $producto->created_at }}</td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                            <div class="card-body">
+                                <ul>
+                                    <li>ID: {{ $UltimoUsuarioRegistrado->id }}</li>
+                                    <li>Nombre: {{ $UltimoUsuarioRegistrado->name }}</li>
+                                    <li>Apellido: {{ $UltimoUsuarioRegistrado->apellido_paterno }} {{ $UltimoUsuarioRegistrado->apellido_materno }}</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
 
-            @endif
+                <div class="row">
+                    <div class="card col-md-6">
+                        <div class="card-header">
+                            <h4>
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#transaccionesCollapse" aria-expanded="true" aria-controls="transaccionesCollapse">
+                                    Transacciones
+                                </button>
+                            </h4>
+                        </div>
+                        <div id="transaccionesCollapse" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Producto</th>
+                                                <th>Descripción</th>
+                                                <th>Cantidad</th>
+                                                <th>Precio</th>
+                                                <th>Usuario</th>
+                                                <th>Alta</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($Transacciones as $transaccion)
+                                                <tr>
+                                                    <td>{{ $transaccion->id }}</td>
+                                                    <td>{{ $transaccion->producto->nombre }}</td>
+                                                    <td>{{ $transaccion->producto->descripcion }}</td>
+                                                    <td>{{ $transaccion->cantidad }}</td>
+                                                    <td>{{ $transaccion->precio }}</td>
+                                                    <td>{{ $transaccion->usuario->name }}</td>
+                                                    <td>{{ $transaccion->created_at }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card col-md-6">
+                        <div class="card-header">
+                            <h4>
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#productosNoConsignadosCollapse" aria-expanded="true" aria-controls="productosNoConsignadosCollapse">
+                                    Productos no consignados
+                                </button>
+                            </h4>
+                        </div>
+                        <div id="productosNoConsignadosCollapse" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Producto</th>
+                                                <th>Descripción</th>
+                                                <th>Stock</th>
+                                                <th>Usuario</th>
+                                                <th>Alta</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($ProductosNConsignados as $producto)
+                                                <tr>
+                                                    <td>{{ $producto->id }}</td>
+                                                    <td>{{ $producto->producto->nombre }}</td>
+                                                    <td>{{ $producto->producto->descripcion }}</td>
+                                                    <td>{{ $producto->producto->stock }}</td>
+                                                    <td>{{ $producto->producto->user->name }}</td>
+                                                    <td>{{ $producto->created_at }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         @endif
-    </div>
+    @endif
 @endsection
+
 
