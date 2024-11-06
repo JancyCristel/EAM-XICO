@@ -35,24 +35,41 @@
                 <label for="no_telefono">Número de Teléfono</label>
                 <input type="text" id="no_telefono" name="no_telefono" required>
             </div>
-
-        </div>
-
-        <div class="container-section">
-
             <div class="container-input">
                 <label for="sexo">Sexo</label>
                 <select id="sexo" name="sexo" required>
                     <option value="Masculino">Masculino</option>
                     <option value="Femenino">Femenino</option>
-                    <option value="Prefiero no decirlo">Otro</option>
+                    <option value="Prefiero no decirlo">Prefiero no decirlo</option>
                 </select>
             </div>
 
+        </div>
+
+        <div class="container-section">
+
+            
+
             <div class="container-input">
-                <label for="direccion">Dirección</label>
-                <input type="text" id="direccion" name="direccion" required>
+                <label for="direccion_envio">Dirección de Envío</label>
+                <input type="text" id="direccion_envio" name="direccion_envio">
             </div>
+
+            <div class="container-input">
+                <label for="direccion_fiscal">Dirección Fiscal</label>
+                <input type="text" id="direccion_fiscal" name="direccion_fiscal">
+            </div>
+
+            <div class="container-input">
+                <label for="referencias">Referencias</label>
+                <input type="text" id="referencias" name="referencias">
+            </div>
+
+            <div class="container-input">
+                <label for="rfc">RFC</label>
+                <input type="text" id="rfc" name="rfc">
+            </div>
+
             @if(auth()->check())
                 @if(auth()->user()->rol === 'Supervisor')
                     <label for="rol">Rol</label>
@@ -75,8 +92,6 @@
             @else
                 <input type="hidden" id="rol" name="rol" value="Cliente">
             @endif
-
-            
 
             <div class="container-input">
                 <label for="email">Email</label>

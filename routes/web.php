@@ -13,6 +13,7 @@ use App\Http\Controllers\TransaccionController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\pagopay;
+use App\Http\Controllers\ServicioController;
 
 
 //inicio
@@ -87,7 +88,8 @@ Route::post('/procesar-pago', [PagoPay::class, 'procesarPago'])->name('pagopay')
 Route::get('/pago', [PagoPay::class, 'index'])->name('pago');
 
 
-
+//SERVICIOS
+Route::get('/servicios', [ServicioController::class, 'index'])->name('servicios');
 
 
 

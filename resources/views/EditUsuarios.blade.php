@@ -13,7 +13,7 @@
         </div>
     @endif
 
-    @if(auth()->user()->rol == 'Supervisor')
+    @if(auth()->user()->rol == 'Cliente')
     <form action="{{ route('UpdateUsuario', $user->id) }}" method="POST">
         @csrf
         @method('PUT')
@@ -44,19 +44,16 @@
                 <option value="Femenino" {{ $user->sexo === 'Femenino' ? 'selected' : '' }}>Femenino</option>
             </select>
         </div>
+        <!-- Dirección de Envío -->
         <div class="form-group">
-            <label for="direccion">Dirección</label>
-            <textarea class="form-control" id="direccion" name="direccion" required>{{ $user->direccion }}</textarea>
+            <label for="direccion_envio">Dirección de Envío</label>
+            <textarea class="form-control" id="direccion_envio" name="direccion_envio">{{ $user->direccion_envio }}</textarea>
         </div>
+
+        <!-- Dirección Fiscal -->
         <div class="form-group">
-            <label for="rol">Rol</label>
-            <select class="form-control" id="rol" name="rol" required>
-                <option value="Encargado" {{ $user->rol === 'Encargado' ? 'selected' : '' }}>Encargado</option>
-                <option value="Cliente" {{ $user->rol === 'Cliente' ? 'selected' : '' }}>Cliente</option>
-                <option value="Contador" {{ $user->rol === 'Contador' ? 'selected' : '' }}>Contador</option>
-                <option value="Supervisor" {{ $user->rol === 'Supervisor' ? 'selected' : '' }}>Supervisor</option>
-                <option value="Vendedor" {{ $user->rol === 'Vendedor' ? 'selected' : '' }}>Vendedor</option>
-            </select>
+            <label for="direccion_fiscal">Dirección Fiscal</label>
+            <textarea class="form-control" id="direccion_fiscal" name="direccion_fiscal">{{ $user->direccion_fiscal }}</textarea>
         </div>
         <div class="form-group">
             <label for="email">Correo Electronico</label>

@@ -28,7 +28,11 @@
                         </ul>
                     </li>
                     <li><a href="/listar-productos">Productos</a></li>
+                    <li><a href="/serivicios">Servicios</a></li>
                     @auth
+                    @if(auth()->user()->rol == 'Cliente')
+                            <li><a href="/cliente">Mi perfil</a></li>
+                        @endif
                         @if(auth()->user()->rol == 'Supervisor')
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle">Administrar</a>

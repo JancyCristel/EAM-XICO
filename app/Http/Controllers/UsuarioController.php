@@ -106,42 +106,49 @@ class UsuarioController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'apellido_paterno' => 'required|string|max:255',
-            'apellido_materno' => 'required|string|max:255',
-            'fecha_nacimiento' => 'required|date',
-            'no_telefono' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $id,
-            'sexo' => 'required|in:Masculino,Femenino,Prefiero no decirlo',
-            'direccion' => 'required|string|max:255',
-            'rol' => 'required|in:Encargado,Cliente,Contador,Supervisor,Vendedor',
-            'password' => 'nullable|string|min:8',
-        ]);
+{
+    // Validación de los datos
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'apellido_paterno' => 'required|string|max:255',
+        'apellido_materno' => 'required|string|max:255',
+        'fecha_nacimiento' => 'required|date',
+        'no_telefono' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email,'.$id,
+        'sexo' => 'required|in:Masculino,Femenino,Prefiero no decirlo',
+        'direccion_envio' => 'required|string|max:255', // Nueva validación para dirección de envío
+        'direccion_fiscal' => 'required|string|max:255', // Nueva validación para dirección fiscal
+        'password' => 'nullable|string|min:8', // La contraseña es opcional, pero debe tener al menos 8 caracteres si se proporciona
+    ]);
 
-        $user = User::find($id);
-        $user->name = $request->name;
-        $user->apellido_paterno = $request->apellido_paterno;
-        $user->apellido_materno = $request->apellido_materno;
-        $user->fecha_nacimiento = $request->fecha_nacimiento;
-        $user->no_telefono = $request->no_telefono;
-        $user->email = $request->email;
-        $user->sexo = $request->sexo;
-        $user->direccion = $request->direccion;
-        $user->rol = $request->rol;
+    // Encontrar el usuario por ID
+    $user = User::find($id);
+    $user->name = $request->name;
+    $user->apellido_paterno = $request->apellido_paterno;
+    $user->apellido_materno = $request->apellido_materno;
+    $user->fecha_nacimiento = $request->fecha_nacimiento;
+    $user->no_telefono = $request->no_telefono;
+    $user->email = $request->email;
+    $user->sexo = $request->sexo;
+    $user->direccion_envio = $request->direccion_envio; // Asignar dirección de envío
+    $user->direccion_fiscal = $request->direccion_fiscal; // Asignar dirección fiscal
+    $user->rol = 'Cliente'; // Asignar el rol como "Cliente" siempre
 
-        if ($request->filled('password')) {
-            $user->password = Hash::make($request->password);
-        }
-
-        $user->save();
-
-        return response()->json([
-            'message' => 'Usuario actualizado correctamente.',
-            'user' => $user,
-        ], 200);
+    // Solo actualizar la contraseña si se proporciona una nueva
+    if ($request->filled('password')) {
+        $user->password = Hash::make($request->password);
     }
+
+    $user->save();
+    return redirect('/cliente')->with('success', 'Datos actualizados');
+
+    // Redireccionar según el rol actual del usuario autenticado
+    if (auth()->user()->rol == "Supervisor") {
+        return redirect()->route('CrudSupervisorUsuarios')->with('success', 'Usuario actualizado correctamente.');
+    } elseif (auth()->user()->rol == "Encargado") {
+        return redirect()->route('ContraEncargadoVista')->with('success', 'Usuario actualizado correctamente.');
+    }
+}
 
 
 

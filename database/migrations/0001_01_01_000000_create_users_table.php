@@ -18,9 +18,13 @@ return new class extends Migration
             $table->string('apellido_materno')->nullable();
             $table->date('fecha_nacimiento')->nullable();
             $table->bigInteger('no_telefono')->nullable();
-            $table->enum('sexo',['Masculino' , 'Femenino' , 'Prefiero no decirlo'])->default('Prefiero no decirlo');
+            $table->enum('sexo', ['Masculino', 'Femenino', 'Prefiero no decirlo'])->default('Prefiero no decirlo');
             $table->string('direccion')->nullable();
-            $table->enum('rol',['Encargado','Cliente','Contador','Supervisor','Vendedor']) -> default('Cliente');
+            $table->string('direccion_envio')->nullable(); // Nueva columna para dirección de envío
+            $table->string('direccion_fiscal')->nullable(); // Nueva columna para dirección fiscal
+            $table->string('referencias')->nullable(); // Nueva columna para referencias
+            $table->string('rfc')->nullable(); // Nueva columna para RFC
+            $table->enum('rol', ['Encargado', 'Cliente', 'Contador', 'Supervisor', 'Vendedor'])->default('Cliente');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
