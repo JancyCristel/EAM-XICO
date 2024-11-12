@@ -14,23 +14,26 @@
     <header>
         <div class="header-container">
             <a href="/login2" class="header-logo">
-                <img src="img/EA.png" class="logo">
+                <img src="{{ asset('img/EA.png') }}" class="logo">
             </a>
+
             <nav>
                 <ul class="nav-menu">
                     <li><a href="/login2">Inicio</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle">Servicios</a>
+                        <a href="#" class="dropdown-toggle">Categorias</a>
                         <ul class="dropdown-menu">
                             @foreach ($categorias as $categoria)
-                                <li><a href="{{ route('productosPorCategoria', $categoria->id) }}">{{ $categoria->nombre }}</a></li>
+                                <li><a
+                                        href="{{ route('productosPorCategoria', $categoria->id) }}">{{ $categoria->nombre }}</a>
+                                </li>
                             @endforeach
                         </ul>
                     </li>
                     <li><a href="/listar-productos">Productos</a></li>
                     <li><a href="/serivicios">Servicios</a></li>
                     @auth
-                    @if(auth()->user()->rol == 'Cliente')
+                        @if(auth()->user()->rol == 'Cliente')
                             <li><a href="/cliente">Mi perfil</a></li>
                         @endif
                         @if(auth()->user()->rol == 'Supervisor')
@@ -112,30 +115,29 @@
         });
     </script>
     <script>
-    // Función para actualizar el número de artículos en el icono del carrito
-    function updateCartItemCount() {
-        fetch('{{ route('cart.count') }}')
-            .then(response => response.json())
-            .then(data => {
-                const cartCountElement = document.querySelector('.badge.badge-light');
-                if (cartCountElement) {
-                    cartCountElement.textContent = data.count;
-                }
+        // Función para actualizar el número de artículos en el icono del carrito
+        function updateCartItemCount() {
+            fetch('{{ route('cart.count') }}')
+                .then(response => response.json())
+                .then(data => {
+                    const cartCountElement = document.querySelector('.badge.badge-light');
+                    if (cartCountElement) {
+                        cartCountElement.textContent = data.count;
+                    }
+                });
+        }
+
+        // Llamar a la función para actualizar el número de artículos cada vez que se carga la página
+        document.addEventListener('DOMContentLoaded', updateCartItemCount);
+
+        // Refrescar el conteo al actualizar el carrito
+        document.querySelectorAll('.btn-primary, .btn-danger').forEach(button => {
+            button.addEventListener('click', function () {
+                setTimeout(updateCartItemCount, 500); // Refresca el conteo después de actualizar el carrito
             });
-    }
-
-    // Llamar a la función para actualizar el número de artículos cada vez que se carga la página
-    document.addEventListener('DOMContentLoaded', updateCartItemCount);
-
-    // Refrescar el conteo al actualizar el carrito
-    document.querySelectorAll('.btn-primary, .btn-danger').forEach(button => {
-        button.addEventListener('click', function() {
-            setTimeout(updateCartItemCount, 500); // Refresca el conteo después de actualizar el carrito
         });
-    });
-</script>
+    </script>
 
 </body>
 
 </html>
-
