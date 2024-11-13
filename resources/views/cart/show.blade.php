@@ -59,7 +59,7 @@
         <h3>Total General: ${{ number_format($totalGeneral, 2) }}</h3>
     @endif
     <a href="{{ route('lista') }}" class="btn btn-secondary">Seguir comprando</a> <!-- Botón para volver a la sección de productos -->
-    <a href="{{ route('pago') }}" class="btn btn-success">Proceder al Pago y Envío</a>
+    <a href="{{ route('pago') }}" class="btn btn-success">Continuar Compra</a>
 </div>
 
 @section('scripts')

@@ -78,7 +78,7 @@
                         <li>
                             <a href="{{ route('carrito.index') }}" title="Ver Carrito">
                                 <i class="fas fa-shopping-cart"></i>
-                                Carrito
+                                
                                 <span class="badge badge-light">
                                     {{ session('cart.totalItems', 0) }}
                                     <!-- Aquí se debería calcular desde el carrito en la sesión -->
