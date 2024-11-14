@@ -31,7 +31,7 @@
                         </ul>
                     </li>
                     <li><a href="/listar-productos">Productos</a></li>
-                    <li><a href="/serivicios">Servicios</a></li>
+                    <li><a href="/servicios">Servicios</a></li>
                     @auth
                         @if(auth()->user()->rol == 'Cliente')
                             <li><a href="/cliente">Mi perfil</a></li>

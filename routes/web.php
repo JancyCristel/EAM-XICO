@@ -89,7 +89,8 @@ Route::get('/pago', [PagoPay::class, 'index'])->name('pago');
 
 
 //SERVICIOS
-Route::get('/servicios', [ServicioController::class, 'index'])->name('servicios');
+Route::get('/servicios', [ServicioController::class, 'index'])->name('servicios.index');
+
 
 
 
