@@ -17,7 +17,6 @@
         <p>Somos Integradores de servicios tecnológicos que ayudamos a lograr más, estableciendo relaciones de
             ganar-ganar. Respaldados por marcas líderes en seguridad, control de acceso, automatización, cómputo,
             mobiliario y energías alternas.</p>
-        <a href="#nuestro-compromiso" class="btn-vermas2">Ver Más</a>
     </div>
     <div class="image-container">
         <img src="img/img-banner.png" alt="Icono de Energía Activa">
@@ -32,7 +31,7 @@
             comunidades, mejorando su calidad de vida y solucionando problemas para que alcancen sus metas.</p>
     </div>
     <div class="image-container">
-        <img src="img/img-banner.png" alt="Imagen de Nuestro Compromiso">
+        <img src="img/compromiso.jpg" alt="Imagen de Nuestro Compromiso">
     </div>
 </section>
 
@@ -54,14 +53,24 @@
 </section>
 
 <!-- Sección Capacidad y Experiencia en el Mercado -->
-<section id="capacidad-experiencia" class="section-background">
-    <h2>Capacidad y Experiencia en el Mercado</h2>
-    <div class="photo-carousel">
-        <img src="producto1.avif" alt="Experiencia 1">
-        <img src="panel.avif" alt="Experiencia 2">
-        <!-- Agrega más fotos según sea necesario -->
+<section class="section-background">
+    <div class="text-container">
+        <h2>Capacidades y Experiencias</h2>
+        <p>Conoce más acerca de las experiencias y capacidades que ofrecemos. 
+        Descubre cómo podemos ayudarte a mejorar tu negocio.</p>
+    </div>
+    <div class="image-container">
+        <div class="photo-carousel">
+            <img src="img/img-banner.png" alt="Experiencia 1">
+            <img src="img/img-banner.png" alt="Experiencia 2">
+            <img src="img/img-banner.png" alt="Experiencia 3">
+            <img src="img/experiencia4.jpg" alt="Experiencia 4">
+            <img src="img/experiencia5.jpg" alt="Experiencia 5">
+            <img src="img/experiencia6.jpg" alt="Experiencia 6">
+        </div>
     </div>
 </section>
+
 
 @if(auth()->check())
     @if(auth()->user()->rol == 'Supervisor')
@@ -185,9 +194,6 @@
         </div>
     @endif
 @endif
-
-
-
 <script>
     // JavaScript para el desplazamiento suave entre secciones
     document.querySelectorAll('.nav-links a').forEach(anchor => {
@@ -224,8 +230,4 @@
         });
     });
 </script>
-
-
-    
-
 @endsection

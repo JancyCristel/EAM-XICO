@@ -55,14 +55,19 @@
 }
 
 .container-login-left #btn-enviar {
-    background-color: #033649;
-    color: #FFF;
-    font-weight: 600;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+    padding: 12px 30px;
+    font-size: 16px;
+    background: linear-gradient(to right, #004cfc, #007bf4);
+    color: white;
+    border-radius: 20px;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 20px;
+    border: none;
 }
-
 .container-login-left #btn-enviar:hover {
-    box-shadow: none;
+    transform: translateY(-3px);
+    background: linear-gradient(to right, #007bf4, #00c0e6);
 }
 
 .container-login-right {

@@ -58,8 +58,13 @@
         </table>
         <h3>Total General: ${{ number_format($totalGeneral, 2) }}</h3>
     @endif
-    <a href="{{ route('lista') }}" class="btn btn-secondary">Seguir comprando</a> <!-- Botón para volver a la sección de productos -->
-    <a href="{{ route('pago') }}" class="btn btn-success">Continuar Compra</a>
+
+    <a href="{{ route('lista') }}" class="btn btn-secondary">Seguir comprando</a>
+    
+    {{-- Mostrar el botón solo si hay productos en el carrito --}}
+    @if (!empty($cart))
+        <a href="{{ route('direccion.index') }}" class="btn btn-primary">Continuar compra</a>
+    @endif
 </div>
 
 @section('scripts')

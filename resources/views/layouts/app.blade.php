@@ -13,7 +13,6 @@
     @include('header')
     <main>
         @yield('contenido')
-        <br><br><br><br>
     </main>
 
     @if(request()->is('login2')|| request()->is('/'))
@@ -21,7 +20,6 @@
             @include('footer')
         </footer>
     @endif
-
     @yield('scripts')
 
 </body>

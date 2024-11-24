@@ -1,114 +1,110 @@
 @extends('layouts.app')
-@section('titulo', 'Registro de usuario') <!-- Establecer el título aquí -->
-<link rel="stylesheet" href="/css/sign-up.css">
-
+@section('titulo', 'Registro de usuario')
 @section('contenido')
+<link rel="stylesheet" href="{{ asset('css/sign-up.css') }}">
 
 <div class="container-form">
     <h1>Crea tu cuenta</h1>
-    <form action="{{ route('user.create') }}" method="POST">
+
+    @if($errors->any())
+        <div id="error-message" class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form action="{{ route('user.store') }}" method="POST" id="registerForm">
         @csrf
 
         <div class="container-section">
-            
             <div class="container-input">
-                <label for="name">Nombre</label>
-                <input type="text" id="name" name="name" required>
+                <label for="name">Nombre <span>*</span></label>
+                <input type="text" id="name" name="name" value="{{ old('name') }}" required>
             </div>
 
             <div class="container-input">
-                <label for="apellido_paterno">Apellido Paterno</label>
-                <input type="text" id="apellido_paterno" name="apellido_paterno" required>
+                <label for="apellido_paterno">Apellido Paterno <span>*</span></label>
+                <input type="text" id="apellido_paterno" name="apellido_paterno" value="{{ old('apellido_paterno') }}" required>
             </div>
 
             <div class="container-input">
-                <label for="apellido_materno">Apellido Materno</label>
-                <input type="text" id="apellido_materno" name="apellido_materno" required>
+                <label for="apellido_materno">Apellido Materno <span>*</span></label>
+                <input type="text" id="apellido_materno" name="apellido_materno" value="{{ old('apellido_materno') }}" required>
             </div>
 
             <div class="container-input">
-                <label for="fecha_nacimiento">Fecha de Nacimiento</label>
-                <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+                <label for="fecha_nacimiento">Fecha de Nacimiento <span>*</span></label>
+                <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" value="{{ old('fecha_nacimiento') }}" required>
             </div>
 
             <div class="container-input">
-                <label for="no_telefono">Número de Teléfono</label>
-                <input type="text" id="no_telefono" name="no_telefono" required>
+                <label for="no_telefono">Número de Teléfono <span>*</span></label>
+                <input type="tel" id="no_telefono" name="no_telefono" value="{{ old('no_telefono') }}" required>
             </div>
+
             <div class="container-input">
-                <label for="sexo">Sexo</label>
+                <label for="sexo">Sexo <span>*</span></label>
                 <select id="sexo" name="sexo" required>
-                    <option value="Masculino">Masculino</option>
-                    <option value="Femenino">Femenino</option>
-                    <option value="Prefiero no decirlo">Prefiero no decirlo</option>
+                    <option value="Masculino" {{ old('sexo') == 'Masculino' ? 'selected' : '' }}>Masculino</option>
+                    <option value="Femenino" {{ old('sexo') == 'Femenino' ? 'selected' : '' }}>Femenino</option>
+                    <option value="Prefiero no decirlo" {{ old('sexo') == 'Prefiero no decirlo' ? 'selected' : '' }}>Prefiero no decirlo</option>
                 </select>
             </div>
-
         </div>
 
         <div class="container-section">
-
-            
-
-            <div class="container-input">
-                <label for="direccion_envio">Dirección de Envío</label>
-                <input type="text" id="direccion_envio" name="direccion_envio">
-            </div>
-
             <div class="container-input">
                 <label for="direccion_fiscal">Dirección Fiscal</label>
-                <input type="text" id="direccion_fiscal" name="direccion_fiscal">
-            </div>
-
-            <div class="container-input">
-                <label for="referencias">Referencias</label>
-                <input type="text" id="referencias" name="referencias">
+                <input type="text" id="direccion_fiscal" name="direccion_fiscal" value="{{ old('direccion_fiscal') }}">
             </div>
 
             <div class="container-input">
                 <label for="rfc">RFC</label>
-                <input type="text" id="rfc" name="rfc">
-            </div>
-
-            @if(auth()->check())
-                @if(auth()->user()->rol === 'Supervisor')
-                    <label for="rol">Rol</label>
-                    <select id="rol" name="rol" required>
-                        <option value="Cliente">Cliente</option>
-                        <option value="Vendedor">Vendedor</option>
-                        <option value="Encargado">Encargado</option>
-                        <option value="Contador">Contador</option>
-                        <option value="Supervisor" selected>Supervisor</option>
-                    </select><br>
-                @elseif(auth()->user()->rol === 'Encargado')
-                    <label for="rol">Rol</label>
-                    <select id="rol" name="rol" required>
-                        <option value="Cliente">Cliente</option>
-                        <option value="Vendedor">Vendedor</option>
-                    </select><br>
-                @else
-                    <input type="hidden" id="rol" name="rol" value="Cliente">
-                @endif
-            @else
-                <input type="hidden" id="rol" name="rol" value="Cliente">
-            @endif
-
-            <div class="container-input">
-                <label for="email">Email</label>
-                <input type="text" id="email" name="email" required>
+                <input type="text" id="rfc" name="rfc" value="{{ old('rfc') }}">
             </div>
 
             <div class="container-input">
-                <label for="password">Contraseña</label>
-                <input type="password" id="password" name="password" required>
+                <label for="email">Email <span>*</span></label>
+                <input type="email" id="email" name="email" value="{{ old('email') }}" required>
+            </div>
+
+            <div class="container-input">
+                <label for="password">Contraseña <span>*</span></label>
+                <input type="password" id="password" name="password" required minlength="8">
+            </div>
+
+            <div class="container-input">
+                <label for="password_confirmation">Confirmar Contraseña <span>*</span></label>
+                <input type="password" id="password_confirmation" name="password_confirmation" required minlength="8">
             </div>
 
             <button type="submit">Registrar Usuario</button>
-
         </div>
-
     </form>
 </div>
 
-@endsection
+<script>
+    // JavaScript para cerrar los mensajes automáticamente
+    document.addEventListener('DOMContentLoaded', function () {
+        // Ocultar el mensaje de éxito después de 3 segundos
+        var successMessage = document.getElementById('success-message');
+        if (successMessage) {
+            setTimeout(function () {
+                successMessage.style.display = 'none'; // Oculta el mensaje
+            }, 3000);
+        }
 
+        // Ocultar el mensaje de error después de 5 segundos
+        var errorMessage = document.getElementById('error-message');
+        if (errorMessage) {
+            setTimeout(function () {
+                errorMessage.style.display = 'none'; // Oculta el mensaje
+            }, 5000);
+        }
+    });
+</script>
+
+@endsection

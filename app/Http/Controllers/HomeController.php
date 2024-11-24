@@ -23,18 +23,18 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        
+
         // Validar los datos del formulario
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
-    
+
         // Intentar iniciar sesión con las credenciales proporcionadas
         if (Auth::attempt($credentials)) {
             // La autenticación fue exitosa
             $user = Auth::user();
-    
+
             // Redirigir según el rol del usuario
             switch ($user->role) {
                 case 'Encargado':

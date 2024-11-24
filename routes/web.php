@@ -14,6 +14,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\pagopay;
 use App\Http\Controllers\ServicioController;
+use App\Http\Controllers\AddressController;
 
 
 //inicio
@@ -31,8 +32,14 @@ Route::get('/login2',[SessionController::class,'manejarinicio'])->name('login.ma
 Route::get('/logout',[SessionController::class, 'destroy'])->name('login.out');
 
 //REGISTRAR USUARIO
-Route::get('/registrar-usuario',[UserController::class, 'create'])->name('user.register');
-Route::post('/agregar-usuario',[UserController::class, 'store'])->name('user.create');
+// Ruta para mostrar el formulario de registro
+Route::get('/registrar-usuario', [UserController::class, 'create'])->name('user.register');
+
+// Ruta para almacenar el usuario
+Route::post('/registrar-usuario', [UserController::class, 'store'])->name('user.store');
+
+
+
 
 //CATEGORIA CLIENTE
 Route::get('/mostrar-categorias',[CategoriaController::class, 'show'])->name('ShowCategorias');
@@ -81,11 +88,22 @@ Route::group(['middleware' => 'web'], function () {
 });
 
 
+//seleccionar direccion
+Route::middleware(['auth'])->group(function () {
+    Route::get('/direccion', [AddressController::class, 'index'])->name('direccion.index');
+    Route::get('/direccion/create', [AddressController::class, 'create'])->name('direccion.create');
+    Route::post('/direccion', [AddressController::class, 'store'])->name('direccion.store');
+    Route::get('/direccion/{id}/edit', [AddressController::class, 'edit'])->name('direccion.edit');
+    Route::put('/direccion/{id}', [AddressController::class, 'update'])->name('direccion.update');
+    Route::delete('/direccion/{id}', [AddressController::class, 'destroy'])->name('direccion.destroy');
+});
+
+
+
 
 
 //pago
-Route::post('/procesar-pago', [PagoPay::class, 'procesarPago'])->name('pagopay');
-Route::get('/pago', [PagoPay::class, 'index'])->name('pago');
+
 
 
 //SERVICIOS

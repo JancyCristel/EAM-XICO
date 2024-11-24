@@ -32,12 +32,10 @@ html, body {
     text-align: center;
 }
 
-/* Eliminado temporalmente `background-attachment: fixed;` para pruebas de visibilidad */
-
-
 .hero h1 {
-    font-size: 3rem;
     margin-bottom: 1rem;
+    font-size: 50px;
+    font-weight: 700;
 }
 
 .hero p {
@@ -45,118 +43,123 @@ html, body {
     margin-bottom: 2rem;
 }
 
-.btn-vermas {
-    background-color: #004cfc;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-
-.btn-vermas:hover {
-    color: #f4f4f9;
-    background-color: #007ACC;
-}
-
-/* Section Background */
+/* General adjustments */
 .section-background {
-    padding: 60px 20px;
+    padding: 60px 40px;
     background-color: #f4f4f9;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 40px;
 }
 
 .section-background.reverse {
     flex-direction: row-reverse;
 }
 
-/* Text Container */
-.text-container {
-    width: 50%;
-    color: #033649;
+/* Text Container Styling */
+.text-container h2 {
+    font-size: 2.5rem;
+    color: #004cfc;
+    margin-bottom: 20px;
+    border-left: 5px solid #007bf4;
+    padding-left: 10px;
 }
 
-.text-container h2 {
-    font-size: 2rem;
+#servicios h2 {
+    font-size: 2.5rem; /* Asegura el mismo tamaño que los demás títulos */
+    color: #004cfc; /* Color azul */
     margin-bottom: 20px;
+    border-left: 5px solid #007bf4; /* Línea azul a la izquierda */
+    padding-left: 10px;
 }
+
 
 .text-container p {
     font-size: 1.125rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    color: #033649;
+    margin-bottom: 20px;
 }
 
-.btn-vermas2 {
-    background-color: #004cfc;
+.btn-vermas {
+    background: linear-gradient(to right, #004cfc, #007bf4);
     color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 12px 24px;
+    border-radius: 30px;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.btn-vermas2:hover {
-    color: #f4f4f9;
-    background-color: #007ACC;
+.btn-vermas:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(to right, #007bf4, #00c0e6);
 }
 
-/* Image Container */
-.image-container {
-    width: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
+/* Image Container Styling */
 .image-container img {
     width: 100%;
-    max-width: 400px;
-    border-radius: 15px;
+    max-width: 500px;
+    border-radius: 20px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
-/* Services Gallery */
+.image-container img:hover {
+    transform: scale(1.05);
+}
+
+/* Services Section */
 .services-gallery {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
 }
 
 .service-item {
     text-align: center;
-    width: calc(33.33% - 20px);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .service-item img {
     width: 100%;
-    max-width: 250px;
-    border-radius: 10px;
+    max-width: 150px;
+    margin-bottom: 15px;
+    border-radius: 50%;
 }
 
 .service-item p {
-    margin-top: 10px;
-    color: #033649;
+    color: #004cfc;
     font-size: 1rem;
+    font-weight: 500;
 }
 
 /* Photo Carousel */
 .photo-carousel {
     display: flex;
-    overflow-x: scroll;
-    gap: 10px;
+    overflow-x: auto;
+    gap: 15px;
     padding: 20px 0;
+    scroll-snap-type: x mandatory;
 }
 
 .photo-carousel img {
-    width: auto;
-    height: 250px;
-    border-radius: 10px;
+    height: 200px;
+    border-radius: 15px;
+    scroll-snap-align: start;
+    transition: transform 0.3s ease;
 }
 
-
-
-
+.photo-carousel img:hover {
+    transform: scale(1.1);
+}

@@ -72,5 +72,10 @@ class User extends Authenticatable
         return $this->hasMany(Pago::class, 'idUsuario');
     }
 
+    public function addresses()
+    {
+        return $this->hasMany(Address::class); // Relación uno a muchos con Address
+    }
+    
 
 }
