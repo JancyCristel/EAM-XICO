@@ -29,7 +29,7 @@
                                 Entre calles: {{ $address->entre_calles ?? 'Ninguna' }}<br>
                                 {{ $address->phone_number }},
                             </p>
-                            <a href="#" class="btn btn-success">Usar esta dirección</a>
+                            <a href="{{ route('stripe.index') }}" class="btn btn-success">Proceder al Pago</a>
                             <a href="{{ route('direccion.edit', $address->id) }}" class="btn btn-warning">Editar Dirección</a>
                             <form action="{{ route('direccion.destroy', $address->id) }}" method="POST" style="display:inline;">
                                 @csrf

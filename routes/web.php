@@ -15,6 +15,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\pagopay;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\StripeController;
 
 
 //inicio
@@ -84,6 +85,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/carrito/update/{id}', [CartController::class, 'update'])->name('cart.update');
     Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
     Route::get('/cart/count', [CartController::class, 'getCount'])->name('cart.count');
+    Route::get('/stripe', [CartController::class, 'stripe'])->name('stripe.index');
 
 });
 
@@ -103,6 +105,16 @@ Route::middleware(['auth'])->group(function () {
 
 
 //pago
+Route::get('/stripe', [StripeController::class, 'index'])->name('stripe.index');
+Route::post('/stripe', [StripeController::class, 'processPayment'])->name('stripe.process');
+Route::get('/payment-success', function () {
+    return view('stripe.success');
+})->name('payment.success');
+
+Route::get('/payment-failed', function () {
+    return view('stripe.failed');
+})->name('payment.failed');
+
 
 
 
