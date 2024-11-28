@@ -30,17 +30,19 @@ html, body {
     justify-content: center;
     align-items: center;
     text-align: center;
+   
 }
 
 .hero h1 {
     margin-bottom: 1rem;
     font-size: 50px;
-    font-weight: 700;
+    font-weight: bold;
 }
 
 .hero p {
     font-size: 1.5rem;
     margin-bottom: 2rem;
+    font-weight: bold;
 }
 
 /* General adjustments */
@@ -64,6 +66,7 @@ html, body {
     margin-bottom: 20px;
     border-left: 5px solid #007bf4;
     padding-left: 10px;
+     font-weight: bold;
 }
 
 #servicios h2 {
@@ -72,6 +75,7 @@ html, body {
     margin-bottom: 20px;
     border-left: 5px solid #007bf4; /* Línea azul a la izquierda */
     padding-left: 10px;
+    
 }
 
 
@@ -144,22 +148,93 @@ html, body {
     font-weight: 500;
 }
 
-/* Photo Carousel */
-.photo-carousel {
+
+
+/* Estilo para el título centrado */
+.titulo-servicios {
+    text-align: center;
+    font-size: 2rem;  /* Ajusta el tamaño según tu preferencia */
+    font-weight: bold;
+    color: #333;  /* Color del texto */
+    margin-bottom: 10px;
+}
+
+/* Estilo para la descripción debajo del título */
+.descripcion-servicios {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;  /* Color del texto */
+    margin-bottom: 30px;
+}
+
+/* Estilo para la galería de servicios */
+.services-gallery {
     display: flex;
-    overflow-x: auto;
-    gap: 15px;
-    padding: 20px 0;
-    scroll-snap-type: x mandatory;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 30px;
 }
 
-.photo-carousel img {
-    height: 200px;
-    border-radius: 15px;
-    scroll-snap-align: start;
-    transition: transform 0.3s ease;
+/* Estilo de cada servicio */
+.service-item {
+    width: 30%;  /* Asegura que las imágenes se muestren de forma horizontal */
+    text-align: center;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.photo-carousel img:hover {
-    transform: scale(1.1);
+/* Estilo para el texto dentro de cada servicio */
+.service-item p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 15px; /* Espacio entre el texto y la imagen */
 }
+
+/* Asegura que las imágenes tengan un tamaño adecuado */
+.service-item img {
+    width: 100%;  /* Las imágenes ocuparán todo el contenedor */
+    height: auto;
+    max-width: 300px;  /* Limita el tamaño máximo de la imagen */
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+    .service-item {
+        width: 100%;  /* En pantallas pequeñas, las imágenes ocuparán todo el ancho */
+    }
+
+    .titulo-servicios {
+        font-size: 1.8rem;  /* Ajustar tamaño del título en pantallas pequeñas */
+    }
+
+    .descripcion-servicios {
+        font-size: 1rem;  /* Ajustar tamaño de la descripción en pantallas pequeñas */
+    }
+}
+
+/* Estilo para la galería de imágenes */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+    gap: 20px; /* Espacio entre las imágenes */
+    justify-items: center; /* Centra las imágenes horizontalmente */
+    margin-top: 20px;
+}
+
+.photo-grid img {
+    width: 100%; /* Las imágenes ocupan el ancho disponible */
+    max-width: 300px; /* Ajusta el tamaño máximo de las imágenes */
+    border-radius: 10px; /* Opcional: Bordes redondeados */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Opcional: Sombra */
+    transition: transform 0.3s ease; /* Animación al pasar el mouse */
+}
+
+.photo-grid img:hover {
+    transform: scale(1.05); /* Zoom suave al pasar el mouse */
+}
+
+

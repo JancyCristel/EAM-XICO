@@ -37,39 +37,60 @@
 
 <!-- Sección Servicios Tecnológicos -->
 <section id="servicios" class="section-background">
-    <h2>Servicios Tecnológicos</h2>
-    <p>Ofrecemos una gama de servicios tecnológicos adaptados a tus necesidades.</p>
+    <!-- Título centrado -->
+    <h2 class="titulo-servicios">Servicios Tecnológicos Integrados</h2>
+    
+    <!-- Texto adicional debajo del título -->
+    <p class="descripcion-servicios">Dimensionamiento de proyectos, venta de productos, instalación de equipos, asesoría y mantenimiento.</p>
+    
     <div class="services-gallery">
+        <!-- Primer servicio -->
         <div class="service-item">
-            <img src="service1.jpg" alt="Servicio 1">
-            <p>Descripción breve del servicio 1</p>
+            <img src="img/auto.jpg" alt="Automatización y Control">
+            <p><strong>Automatización y Control</strong><br>
+            Implementamos soluciones de automatización y control de acceso para el mejor manejo de tu negocio, empresa u hogar.</p>
         </div>
+
+        <!-- Segundo servicio -->
         <div class="service-item">
-            <img src="service2.jpg" alt="Servicio 2">
-            <p>Descripción breve del servicio 2</p>
+            <img src="img/luces.avif" alt="Energías Alternas">
+            <p><strong>Energías Alternas</strong><br>
+            Ofrecemos soluciones en energías alternas para solucionar problemas y mejorar la calidad de vida de las personas.</p>
         </div>
-        <!-- Agrega más servicios según sea necesario -->
+
+        <!-- Tercer servicio -->
+        <div class="service-item">
+            <img src="img/seguridad.avif" alt="Seguridad y Vigilancia">
+            <p><strong>Seguridad y Vigilancia</strong><br>
+            Tenemos el sistema de seguridad y vigilancia que más se adapte a tus necesidades. Vigila y protege lo más valioso para ti.</p>
+        </div>
+
+         <!-- Cuarto servicio -->
+         <div class="service-item">
+            <img src="img/computo.avif" alt="Cómputo y mobiliario">
+            <p><strong>Cómputo y mobiliario</strong><br>
+            Tenemos la solución y soporte en equipo de cómputo y mobiliario para tu casa, negocio o empresa.</p>
+        </div>
     </div>
 </section>
+
 
 <!-- Sección Capacidad y Experiencia en el Mercado -->
 <section class="section-background">
     <div class="text-container">
-        <h2>Capacidades y Experiencias</h2>
-        <p>Conoce más acerca de las experiencias y capacidades que ofrecemos. 
-        Descubre cómo podemos ayudarte a mejorar tu negocio.</p>
+        <h2>Capacidad y Experiencia en el Mercado</h2>
+        <p>Integramos productos para que hagas más</p>
     </div>
     <div class="image-container">
-        <div class="photo-carousel">
-            <img src="img/img-banner.png" alt="Experiencia 1">
-            <img src="img/img-banner.png" alt="Experiencia 2">
-            <img src="img/img-banner.png" alt="Experiencia 3">
-            <img src="img/experiencia4.jpg" alt="Experiencia 4">
-            <img src="img/experiencia5.jpg" alt="Experiencia 5">
-            <img src="img/experiencia6.jpg" alt="Experiencia 6">
+        <div class="photo-grid">
+            <img src="img/cap1.webp" alt="Experiencia 1">
+            <img src="img/cap2.webp" alt="Experiencia 2">
+            <img src="img/cap3.webp" alt="Experiencia 3">
+            <img src="img/cap4.webp" alt="Experiencia 4">
         </div>
     </div>
 </section>
+
 
 
 @if(auth()->check())

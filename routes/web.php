@@ -16,6 +16,7 @@ use App\Http\Controllers\pagopay;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\StripeController;
+use App\Http\Controllers\PedidoController;
 
 
 //inicio
@@ -116,6 +117,8 @@ Route::get('/payment-failed', function () {
 })->name('payment.failed');
 
 
+//PEDIDOS
+Route::get('/pedidos', [PedidoController::class, 'misPedidos'])->name('mis-pedidos')->middleware('auth');
 
 
 //SERVICIOS
@@ -185,3 +188,20 @@ Route::get('contador/Continuar-Pagos/Vendedor{id}',[PagoController::class, 'magi
 Route::get('contador/Listar-Pagos',[PagoController::class, 'index'])->name('ListarPagos');
 Route::get('contador/Listar-Pagos/pago{id}',[PagoController::class, 'detalles'])->name('DetallarPago');
 Route::put('contador/Listar-Pagos/pago{id}',[PagoController::class, 'actualizardetalles'])->name('ActualizarPago');
+
+
+//footer
+Route::post('/send-message', function (Request $request) {
+    // Validar los datos del formulario
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'phone' => 'required|digits:10',
+        'email' => 'required|email',
+        'message' => 'required|string',
+    ]);
+
+    // Aquí puedes agregar la lógica para enviar el correo (si lo deseas)
+
+    // Redirigir de vuelta con el mensaje de éxito
+    return back()->with('success', 'Mensaje enviado con éxito');
+});

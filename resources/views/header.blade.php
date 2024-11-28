@@ -33,6 +33,10 @@
                     <li><a href="/listar-productos">Productos</a></li>
                     <li><a href="/servicios">Servicios</a></li>
                     @auth
+                        <li><a href="{{ route('mis-pedidos') }}">Mis pedidos</a></li>
+                    @endauth
+
+                    @auth
                         @if(auth()->user()->rol == 'Cliente')
                             <li><a href="/cliente">Mi perfil</a></li>
                         @endif
@@ -78,7 +82,7 @@
                         <li>
                             <a href="{{ route('carrito.index') }}" title="Ver Carrito">
                                 <i class="fas fa-shopping-cart"></i>
-                                
+
                                 <span class="badge badge-light">
                                     {{ session('cart.totalItems', 0) }}
                                     <!-- Aquí se debería calcular desde el carrito en la sesión -->

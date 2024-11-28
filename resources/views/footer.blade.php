@@ -203,10 +203,29 @@
         #copyright {
             margin-top: 20px;
         }
+
+        .alert {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.alert-success {
+    background-color: #4CAF50;
+    color: white;
+}
     </style>
 </head>
 
 <body>
+
+    @if (session('success'))
+        <div class="alert alert-success"
+            style="background-color: #4CAF50; color: white; padding: 10px; margin-bottom: 20px;">
+            {{ session('success') }}
+        </div>
+    @endif
+
 
     <footer class="footer">
         <div class="footer-container">
@@ -234,7 +253,7 @@
             </div>
             <div class="info-request">
                 <h3>Quiero más información</h3>
-                <form action="#" method="post">
+                <form action="/send-message" method="post">
                     <label for="name">Nombre:</label>
                     <input type="text" id="name" name="name" required placeholder="Ingresa tu nombre">
 

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Stripe\Stripe;
 use Stripe\Charge;
-use Stripe\Customer;
+use App\Models\Pedido; // Importa el modelo Pedido
 
 class StripeController extends Controller
 {
@@ -56,7 +56,22 @@ class StripeController extends Controller
 
             // Verifica si el pago fue exitoso
             if ($charge->status === 'succeeded') {
-                // Redirige a una página de éxito o muestra un mensaje
+                // Obtener los datos del carrito y del usuario
+                $userId = auth()->id(); // ID del usuario autenticado
+                $cartKey = 'cart_' . $userId; // Clave del carrito
+                $cart = session()->get($cartKey, []); // Obtener carrito de la sesión
+
+                // Guardar el pedido en la base de datos
+                Pedido::create([
+                    'user_id' => $userId,
+                    'productos' => json_encode($cart), // Guardar productos como JSON
+                    'estado' => 'pedido aceptado', // Estado inicial del pedido
+                ]);
+
+                // Limpiar el carrito de la sesión
+                session()->forget($cartKey);
+
+                // Redirige a la página de éxito
                 return redirect()->route('payment.success')->with('success', 'Pago realizado con éxito.');
             } else {
                 // Manejo de fallos
@@ -68,4 +83,5 @@ class StripeController extends Controller
         }
     }
 }
+
 

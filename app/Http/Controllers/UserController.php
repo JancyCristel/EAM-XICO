@@ -59,4 +59,6 @@ class UserController extends Controller
         // Redirigir con mensaje de éxito
         return redirect()->route('login.index')->with('success', 'Usuario registrado correctamente. Por favor, inicia sesión.');
     }
+
+    
 }

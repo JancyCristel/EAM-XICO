@@ -116,7 +116,6 @@ class AddressController extends Controller
 
         return redirect()->route('direccion.index')->withErrors('No se pudo eliminar la dirección.');
     }
-
-
+    
 }
 

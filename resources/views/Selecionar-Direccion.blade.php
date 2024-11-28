@@ -2,7 +2,7 @@
 
 @section('contenido')
 <div class="container">
-    <h1 class="text-center mb-4">Seleccionar Dirección</h1>
+    <h1 class="text-center mb-4">Seleccionar Dirección de Envío</h1>
 
     @if(session('success'))
         <div id="success-message" class="alert alert-success">
@@ -27,9 +27,9 @@
                                 {{ $address->municipio }}, {{ $address->estado }}, {{ $address->codigo_postal }} <br>
                                 Referencias: {{ $address->referencias ?? 'Ninguna' }} <br>
                                 Entre calles: {{ $address->entre_calles ?? 'Ninguna' }}<br>
-                                {{ $address->phone_number }},
+                                {{ $address->phone_number }}
                             </p>
-                            <a href="{{ route('stripe.index') }}" class="btn btn-success">Proceder al Pago</a>
+                            <a href="{{ route('stripe.index') }}" class="btn btn-success">Selccionar Dirección</a>
                             <a href="{{ route('direccion.edit', $address->id) }}" class="btn btn-warning">Editar Dirección</a>
                             <form action="{{ route('direccion.destroy', $address->id) }}" method="POST" style="display:inline;">
                                 @csrf

@@ -2,7 +2,7 @@
 
 @section('contenido')
 <div class="container mt-5">
-    <h2 class="text-center mb-4">Pagar con Stripe</h2>
+    <h2 class="text-center mb-4">Realiza tu Pago</h2>
 
     {{-- Mensaje de error o éxito --}}
     @if(session('error'))
